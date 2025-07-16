@@ -73,12 +73,12 @@ html {
 }
 
 body {
-  background: #222;
+  background: #1a1a1a;
   /* font-family: ; */
-  padding: 0 2rem;
+  /* padding: 0 2rem; */
   font-weight: 400;
   line-height: 1.75;
-  color: #fff;
+  color: #fff;  
 }
 
 p {
@@ -89,7 +89,6 @@ p {
 h1,
 h2,
 h3,
-h4,
 h5 {
   margin: 0;
   margin-bottom: 1.38rem;
@@ -107,6 +106,7 @@ h1 {
 }
 
 h2 {
+  margin-top: 1rem;
   font-size: 2.441rem;
 }
 
@@ -139,21 +139,23 @@ ul {
 }
 
 .container {
-  width: 90vw;
+  /* width: 90vw; */
   border: 5px solid var(--primary-500);
   border-radius: var(--borderRadius);
-  max-width: var(--max-width);
+  /* max-width: var(--max-width); */
   margin-bottom: 1rem;
   /* padding-top: 2rem; */
   padding: 2rem;
 }
 
 .img {
-  width: 100%;
-  /* height: 300px; */
+  width: 250px;
+  height: auto;
   display: block;
   object-fit: cover;
   margin-bottom: 0.5rem;
+  border-radius: 50%;
+  opacity: .3;
 }
 
 /* buttons */
@@ -259,7 +261,7 @@ form {
 
 /* loading */
 
-@keyframes spinner {
+/* @keyframes spinner {
   to {
     transform: rotate(360deg);
   }
@@ -276,7 +278,7 @@ form {
 
 .loading {
   margin: 0 auto;
-}
+} */
 
 /* /loading */
 
@@ -295,13 +297,11 @@ form {
   margin-bottom: 1rem;
 }
 
-
 /* 
 ==================
 Navbar
 ==================
 */
-
 .navbar {
   display: flex;
   justify-content: center;
@@ -341,11 +341,11 @@ Navbar
 
 .nav-links {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   /* todo */
   height: 0;
   overflow: hidden;
-  transition: var(--transition)
+  transition: var(--transition);
 }
 
 .show-links {
@@ -372,7 +372,7 @@ Navbar
     display: none;
   }
   .navbar {
-    height: 6rem;
+    height: 4rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -390,8 +390,7 @@ Navbar
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* flex-direction: row; */
-    /* align-items: center; */
+    flex-direction: row;
     width: 100%;
     /* margin-left: auto; */
   }
@@ -409,14 +408,14 @@ Navbar
 Page
 ==================
 */
-.page {
+/* .page {
   width: 90vw;
   max-width: var(--max-width);
-  margin: 0 auto;
+  margin: 0 auto; */
   /* padding-top: 2rem; */
-  min-height: calc(100vh - (6rem + 4rem));
+  /* min-height: calc(100vh - (6rem + 4rem));
   
-}
+} */
 
 /* 
 ==================
@@ -424,30 +423,128 @@ Hero
 ==================
 */
 
+/* ================ HEADER/HERO SECTION ================ */
+header {
+    width: 100%;
+    min-height: 100vh; /* Ensures the header section always takes up at least the full screen height */
+    display: flex; /* Use flexbox to center the hero-container */
+    justify-content: center; /* Horizontally centers the hero-container */
+    align-items: center;   /* Vertically centers the hero-container */
+    padding: 6rem 0 5rem; /* Sufficient top padding for fixed nav, bottom padding for spacing */
+    
+    /* --- CORRECTED BACKGROUND IMAGE STYLES --- */
+    background-image: url(../assets/Snow.jpg); /* Your image path */
+    background-size: cover; /* This is the correct property to make the image cover the entire area without distorting, cropping if needed */
+    background-position: center center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from tiling */
+    background-attachment: scroll; /* Use 'fixed' for a parallax effect, 'scroll' for normal scrolling */
+    
+    /* Optional: Add an overlay for text readability, especially if the image is busy */
+    background-blend-mode: overlay; /* Blends the background image with a color */
+    background-color: rgba(0, 0, 0, 0.4); /* Dark overlay color. Adjust '0.4' for more/less darkness. */
+}
+
 .hero-container {
-  display: grid;
-  border: 5px solid var(--primary-500);
-  border-radius: var(--borderRadius);
-  margin-top: 0;
-  margin-bottom: 1rem;
-  /* padding-bottom: 1rem; */
+    /* This container holds your image and text, and will be centered by the header's flex properties */
+    display: flex;
+    flex-direction: column; /* Default to column for mobile: image on top, text below */
+    align-items: center;   /* Center items horizontally in column layout (mobile) */
+    text-align: center;    /* Center text within this container for mobile */
+    
+    width: 90%; /* Responsive width for the content box */
+    max-width: 900px; /* Max width for the content box on larger screens */
+    
+    padding: 2.5rem; /* Good internal padding for content */
+    /* background-color: rgba(255, 255, 255, 0.9); */
+     /* Semi-transparent white background for the content box */
+    border-radius: var(--border-radius-large);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    gap: 2rem; /* Space between the image and text/buttons */
+}
+
+.hero-image {
+    /* This div holds your circular profile image */
+    width: 180px; /* Default size for the circular image container */
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden; /* Ensures the image stays within the circle */
+    border: 5px solid var(--color-primary); /* Stylish border around the image */
+    /* If you're using an <img> tag inside hero-image, you don't need background-image here */
+    /* background-image: url('assets/Snow.jpg'); */ /* Uncomment if Snow.jpg is the *background* of this circle */
+    /* background-size: cover; */
+    /* background-position: center; */
+}
+
+/* If you uncommented the <img> tag inside hero-image in HTML: */
+.hero-image .img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills the circle without distortion */
+    border-radius: 50%; /* Make sure the img itself is also circular */
+    display: block; /* Removes extra space below inline images */
 }
 
 .hero-text {
-  padding-left: 2rem;
-  padding-right: 1rem;
+    /* Styles for the text content block */
+    color: var(--color-secondary); /* Dark text color on light background */
+    /* Remove padding-left/right here, it's better handled by hero-container's padding or max-width */
+    padding: 0; /* Resetting unnecessary padding */
+    width: 100%; /* Allows it to take full width within hero-container */
+    text-align: center; /* Ensures text is centered for mobile/column layout */
 }
 
-.sno {
-  display: block;
-  font-size: var(--smallText);
-  margin-bottom: 0.5rem;
-  text-transform: capitalize;
-  letter-spacing: var(--letterSpacing);
-  width: 8rem;
-  text-align: center;
-  margin: 0 auto;
-  margin-bottom: 0.5rem;
+.hero-text h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem); /* Responsive font size for heading */
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+}
+
+.hero-text p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem); /* Responsive font size for paragraph */
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    max-width: 600px; /* Constrain paragraph width for readability */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row; /* Stack buttons on mobile */
+     /* Space between buttons */
+    margin-top: 1rem;
+}
+
+/* Corrected .sno styles to apply to the button directly */
+.sno.btn { /* Target the button with both classes */
+    display: block; /* Ensure it's a block-level element */
+    font-size: 1rem; /* Use a more standard font size */
+    margin-bottom: 0.5rem;
+    text-transform: capitalize;
+    letter-spacing: var(--letterSpacing); /* If you have this variable defined */
+    width: 8rem; /* Fixed width for the button */
+    text-align: center;
+    margin: 0.5rem auto; /* Center button with vertical margin */
+}
+
+/* General button styles for .btn should already be defined (as provided in your full CSS) */
+/* .btn { ... } */
+
+/* Specific styling for the .sno button, usually on top of .btn */
+.btn.sno {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white); /* Text color for the 'sno' button */
+}
+
+.btn.sno:hover {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+
+.btn.sno a {
+    color: inherit; /* Ensure the link text inherits button color */
+    text-decoration: none;
 }
 @media screen and (min-width: 48em) {
   .hero-container {
@@ -460,23 +557,56 @@ Hero
   }
 }
 
-/* 
-==================
-Services
-==================
-*/
-
-@media screen and (min-width: 36em) {
-  
+/* ================== Services ================== */
+.services__container-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
 }
 
-@media screen and (min-width: 62em) {
+/* ================== Services End ================== */
+
+/* ================== Gallery ================== */
+.exhibition {
+  width: 100%;
+}
+
+.exhibition__container-art {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.exhibition__container-art img {
+    width: 392px; 
+    height: 392px; 
+    object-fit: cover;
+    display: block; 
+    transition: transform 0.4s ease-in-out;
+    border: 10px solid var(--color-primary-500);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
 
 }
 
-@media screen and (min-width: 75em) {
+/* ================== Gallery End ================== */
 
+/* ================== Contact ================== */
+#contact {
+  width: 90vw;
+  max-width: var(--max-width);
+  margin: 0 auto; */
+  padding-top: 2rem;
+  /* min-height: calc(100vh - (6rem + 4rem)); */
+  background-color: #282a32;
 }
+.contact-area {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+ 
+/* ================== Contact End ================== */
 
 /* 
 ==================
@@ -491,7 +621,10 @@ Footer
 Footer
 ==================
 */
-
+footer {
+  background-color: #2a2a2a;
+  font-size: 1.5rem;
+}
 .page-footer {
   height: 4rem;
   display: flex;
@@ -538,7 +671,17 @@ Contact (III)
 ==================
 */
 
+@media screen and (min-width: 36em) {
+  
+}
 
+@media screen and (min-width: 62em) {
+
+}
+
+@media screen and (min-width: 75em) {
+
+}
 
 
 
