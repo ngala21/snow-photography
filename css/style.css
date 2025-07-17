@@ -211,7 +211,7 @@ ul {
 }
 
 /* form */
-form {
+/* form {
   width: 90vw;
   max-width: var(--fixed-width);
   background: white;
@@ -257,7 +257,7 @@ form {
   color: var(--red-dark);
   letter-spacing: var(--letterSpacing);
   text-transform: capitalize;
-}
+} */
 
 /* loading */
 
@@ -605,6 +605,11 @@ header {
   grid-template-columns: repeat(2, 1fr);
 }
 
+.contact-right {
+  background-color: #1a1a1a;
+  padding: 1rem;
+  color: #f1f5f9;
+}
  
 /* ================== Contact End ================== */
 
