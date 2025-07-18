@@ -574,7 +574,8 @@ header {
 .exhibition__container-art {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  gap: 0.5rem;
+  border: none;
 }
 
 .exhibition__container-art img {
@@ -583,10 +584,13 @@ header {
     object-fit: cover;
     display: block; 
     transition: transform 0.4s ease-in-out;
-    border: 10px solid var(--color-primary-500);
+    border: 5px solid var(--primary-500);
     border-radius: 8px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem;    
+}
 
+.exhibition__container-art img:hover {
+  transform: rotateY(90deg);
 }
 
 /* ================== Gallery End ================== */
@@ -596,7 +600,7 @@ header {
   width: 90vw;
   max-width: var(--max-width);
   margin: 0 auto; */
-  padding-top: 2rem;
+  padding-top: 1rem;
   /* min-height: calc(100vh - (6rem + 4rem)); */
   background-color: #282a32;
 }
@@ -654,11 +658,14 @@ form {
 .form-group input {
   width: 100%;
   padding: 1rem 1.2rem;
-  border: 1px solid #444;
   border-radius: 8px;
   font-size: 1rem;
   background: #1a1a1a;
   color: #f0f0f0;
+}
+
+.form-group input:hover {
+  border: 1px solid var(--primary-500);
 }
 
 .form-group textarea {
@@ -672,12 +679,17 @@ form {
   border-radius: 8px;
 }
 
+.form-group textarea:hover {
+  border: 5px solid var(--primary-500);
+}
+
 .contact-form button {
   width: 100%;
   padding: 1rem;
   margin-top: 0.5rem;
   border-radius: 8px;
-
+  font-size: 1rem;
+  font-weight: bold;
 }
 /* ================== Contact End ================== */
 
